@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Notification, Search, Settngs } from "../../../constants/icons";
 import { Avatar } from "../../../constants/images";
+import { fetUserData } from "../../../services/api";
+import { UserDataProps } from "../../../types";
 
 const Navbar = () => {
+  const [user, setUser] = useState<UserDataProps>();
+  useEffect(() => {
+    fetUserData().then((res) => setUser(res));
+  }, []);
+  const [searh, setSearch] = useState("");
   return (
     <div className="bg-white h-[60px] rounded-full flexBetween md:p-3 px-2 md:px-5">
       <h4 className="font-semibold hidden md:block">Overview</h4>
@@ -10,6 +17,8 @@ const Navbar = () => {
         <div className="relative  h-full">
           <input
             type="text"
+            value={searh}
+            onChange={(e) => setSearch(e.target.value)}
             placeholder="Serach"
             className="rounded-full bg-[#F3F4F7] *: h-full p-2 py-3 placeholder-black  text-xs pl-9 flexStart"
           />
@@ -47,7 +56,7 @@ const Navbar = () => {
                 @wiiliamBill{" "}
                 <span className="flag text-black font-medium ">Pro</span>
               </p>
-              <h5 className="text-sm font-medium">William Blake</h5>
+              <h5 className="text-sm font-medium">{user?.username}</h5>
             </div>
           </div>
         </div>

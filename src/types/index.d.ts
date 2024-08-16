@@ -16,3 +16,7 @@ export type AvatarLabelProps = {
   avatar: string;
   name?: string;
 };
+
+export type UserDataProps = {
+  username: string;
+};
