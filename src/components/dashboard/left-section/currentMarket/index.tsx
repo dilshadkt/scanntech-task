@@ -62,7 +62,11 @@ const CurrentMarket = () => {
                 {row.date}
               </td>
               <td className="hidden sm:flexCenter text-center py-3 ">
-                <span className=" text-[10px] md:text-xs px-3 py-[2px] w-fit rounded-full flexCenter bg-green-300">
+                <span
+                  className={`${
+                    row.status === "Paid" ? "bg-red-500" : "bg-green-500"
+                  } text-[10px] md:text-xs px-3 py-[2px] w-fit rounded-full flexCenter `}
+                >
                   <div className="w-[5px] h-[5px] rounded-full bg-green-800 mr-1"></div>
                   {row.status}
                 </span>
