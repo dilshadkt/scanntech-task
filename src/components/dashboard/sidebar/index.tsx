@@ -17,6 +17,7 @@ const SideBar = () => {
                 <img
                   src={item.icon}
                   width={25}
+                  alt={item.title}
                   className={`${
                     (currentPath === item.title ||
                       (currentPath === undefined &&
